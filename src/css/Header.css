@@ -1,0 +1,13 @@
+.headerContainer
+{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+.aboutUsBtn
+{
+    position: absolute;
+    right: 4rem;
+}

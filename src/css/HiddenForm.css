@@ -1,0 +1,35 @@
+.taskAddForm
+{
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: rgba(127, 255, 212, 0.336);
+    z-index: 10000;
+}
+.formContainer 
+{
+    margin: 0 auto;
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    border: 2px solid black;
+}
+.closeBtn
+{
+    position: relative;
+    left: 35%;
+}
+.formContainer div
+{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

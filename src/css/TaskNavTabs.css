@@ -1,0 +1,39 @@
+.tabsContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    border-bottom: 1px solid grey;
+}
+.tab
+{
+    margin: 5px 2rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: 0.3s all ease;
+}
+.active.pendingTab
+{
+    border-bottom: 4px solid darkmagenta;
+    background-color: rgba(139, 0, 139, 0.19);
+}
+.pendingTab:hover
+{
+    background-color: rgba(139, 0, 139, 0.19);
+}
+.completedTab:hover
+{
+    background-color: rgba(0, 128, 0, 0.19);
+}
+.active.completedTab
+{
+    border-bottom: 4px solid green;
+    background-color: rgba(0, 128, 0, 0.19);
+
+}
