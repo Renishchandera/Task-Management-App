@@ -12,19 +12,23 @@ function BottomPanel({addTask, numberOfTasks})
   const handleClick = useCallback(()=>{
       console.log("Task ADDED");
       setFormStatus(true);
-  })
+  }, [])
+
+  console.log(numberOfTasks);
   const setNewTask = useCallback((newTask)=>
   {
+    console.log("FUCK YOU REACT");
+    console.log(numberOfTasks);
     addTask({
       status: false,
       des: newTask.des,
       title: newTask.title,
       category: newTask.category,
-      id: numberOfTasks.current+1,
+      id: numberOfTasks + 1,
       DT: newTask.dateNTime,
     });
 
-  });
+  }, [numberOfTasks, addTask]);
 
 
   const updateFormStatus = useCallback((x)=>

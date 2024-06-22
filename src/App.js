@@ -7,32 +7,35 @@ import './App.css';
 import TasksContainer from './components/TasksContainer';
 
 function App() {
-  let storedTasks;
+
+
+  console.log((localStorage.getItem('numberOfTasks')));
 
   const [type, setType] = useState(false);
-  const numberOfTasks = useRef(0);
-  const [newTask, setNewTask] = useState({});
+  const [numberOfTasks, setNumberOfTasks] = useState(JSON.parse(localStorage.getItem('numberOfTasks'))===null?0:JSON.parse(localStorage.getItem('numberOfTasks')));
+  console.log(numberOfTasks);
+  const [allTasks, setTasks] = useState(JSON.parse(localStorage.getItem('allData'))===null?[]:(JSON.parse(localStorage.getItem('allData'))));
 
-  const [allTasks, setTasks] = useState([]);
 
-
-  useEffect(()=>
-  {
-    storedTasks = JSON.parse(localStorage.getItem('allTasks'));
-    if(storedTasks !== null)
-    {
-      setTasks(storedTasks);
-    }
-  }, [allTasks]);
 
   const updateTasks = useCallback((x)=>
   {
     console.log("update Tasks calledd");
     console.log(`This is new Task`);
     console.log(x);
-    setTasks([...allTasks, x]);
-    localStorage.setItem('allData', JSON.stringify(allTasks));
-  }, [newTask]);
+    console.log("this is all tasks before adding new task");
+    console.log(allTasks);
+    console.log("Addiing spread operator");
+    console.log([...allTasks, x]);
+    const newAllTasks = [...allTasks, x];
+    setTasks(newAllTasks);
+    console.log("this is all tasks AFTER adding new task");
+    console.log(allTasks);
+    localStorage.setItem('allData', JSON.stringify([...allTasks, x]));
+    localStorage.setItem('numberOfTasks', JSON.stringify(numberOfTasks));
+    console.log(localStorage.getItem('allData'));
+    console.log(localStorage.getItem('numberOfTasks'));
+  }, [allTasks]);
 
   const updateType = useCallback((t) =>
   {
@@ -41,12 +44,11 @@ function App() {
 
   const addNewTask = useCallback((x)=>
   {   console.log("new Task seted");
-      setNewTask(x);
+      setNumberOfTasks(x.id);
       updateTasks(x);
-      numberOfTasks.current = numberOfTasks.current + 1;
       console.log(numberOfTasks);
       console.log(allTasks);
-  }, [newTask]);
+  }, [allTasks, numberOfTasks]);
 
   // const updateTask = useCallback((new)=>
   // {
@@ -64,10 +66,10 @@ function App() {
       {
         alert("This Task Do Not Exists");
       }
-
-      localStorage.setItem(JSON.stringify(allTasks));
+      localStorage.setItem('allData', JSON.stringify(allTasks));
+      localStorage.setItem('numberOfTasks', JSON.stringify(numberOfTasks));
      
-  }, [numberOfTasks, allTasks]);
+  }, [allTasks, numberOfTasks]);
 
   return (
     <>
@@ -80,4 +82,4 @@ function App() {
   );
 }
 
-export default memo(App);
+export default (App);

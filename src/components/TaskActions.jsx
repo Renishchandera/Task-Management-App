@@ -5,12 +5,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useCallback } from 'react';
 
-function TaskActions({task, causeRender, setDeleteId})
+function TaskActions({task, causeRender,updateTask, setDeleteId})
 {   
      const handleMarkClick = useCallback((e)=>{
                 
                     console.log(`Marked as ${!task.status?"In":""} Completed`)
-                    task.status = !task.status;
+                    updateTask(!task.status, task.id);
                 
                 causeRender("qdwev");
      })
