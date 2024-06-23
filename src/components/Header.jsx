@@ -1,9 +1,19 @@
-import { memo } from 'react';
+import { memo,useState, useCallback } from 'react';
+import AboutUs from './AboutUs';
 import AboutUsIcon from '@mui/icons-material/InfoTwoTone';
 import '../css/Header.css';
 
  function Header()
  {
+
+      console.log("Header Rendered");
+
+      const [AboutUsStatus, setAboutUsStatus] = useState(false);
+
+   const handleClick = useCallback(()=>
+   {
+      setAboutUsStatus(true);
+   }, []);
     return (
         <>
         <div className={"headerContainer"}>
@@ -11,7 +21,8 @@ import '../css/Header.css';
            <h2>Task Manager</h2> 
            <h4>All Your Tasks In One Place</h4>
            </div>
-           <section className={"aboutUsBtn"}>About Us <AboutUsIcon /> </section>
+           <section className={"aboutUsBtn"} onClick={handleClick}>About Us <AboutUsIcon /></section>
+           <AboutUs status={AboutUsStatus} setStatus={setAboutUsStatus}/>
         </div>
 
         </>
