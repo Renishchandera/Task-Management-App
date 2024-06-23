@@ -17,6 +17,7 @@ function App() {
   const [numberOfTasks, setNumberOfTasks] = useState(JSON.parse(localStorage.getItem('numberOfTasks'))===null?0:JSON.parse(localStorage.getItem('numberOfTasks')));
   console.log(numberOfTasks);
   const [allTasks, setTasks] = useState(JSON.parse(localStorage.getItem('allData'))===null?[]:(JSON.parse(localStorage.getItem('allData'))));
+  const [filter, setFilter] = useState({type: 'Sort', subType: 'RecentlyAdded'});
 
 
 
@@ -77,9 +78,9 @@ function App() {
   return (
     <>
       <Header />
-      <FilterPanel/>
+      <FilterPanel setFilter={setFilter}/>
       <TaskNavTabs setType={updateType}/>
-      <TasksContainer type={type}  allTasks={allTasks} setDeleteId={deleteTask} setEditId={editTask}/>
+      <TasksContainer type={type}  allTasks={allTasks} setDeleteId={deleteTask} setEditId={editTask} filter={filter}/>
       <BottomPanel addTask={addNewTask} numberOfTasks={numberOfTasks} />
       {editFormStatusAndId.status   &&  <HiddenEditForm statusAndId={editFormStatusAndId} setEditFormStatusAndId={setEditFormStatusAndId}/>}
     </>

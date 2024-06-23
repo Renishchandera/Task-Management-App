@@ -3,13 +3,21 @@ import Task from "./Task";
 import EmptyIcon from '@mui/icons-material/ErrorTwoTone';
 import '../css/TasksContainer.css';
 
-function TasksContainer({ type , setDeleteId, setEditId}) {
+function TasksContainer({ type , setDeleteId, setEditId, filter}) {
     console.log("Task container red=ndered");
 
     let allTasks = JSON.parse(localStorage.getItem('allData'));
     if(allTasks === null)
     {
         allTasks = [];
+    }
+
+    if(filter.type === 'Sort' && filter.subType === 'RecentlyAdded')
+    {
+        allTasks = allTasks.sort((a,b) => a.id <= b.id);
+    }else if(filter.type === 'Sort' && filter.subType === 'FirstAdded')
+    {
+        allTasks = allTasks.sort((a,b) => a.id > b.id);
     }
     // const updateTask = useCallback((new) =>
     // {
