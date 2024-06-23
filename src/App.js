@@ -5,12 +5,14 @@ import TaskNavTabs from './components/TaskNavTabs';
 import BottomPanel from './components/BottomPanel';
 import './App.css';
 import TasksContainer from './components/TasksContainer';
+import HiddenEditForm from './components/HiddenEditForm';
 
 function App() {
 
 
   console.log((localStorage.getItem('numberOfTasks')));
 
+  const [editFormStatusAndId, setEditFormStatusAndId] = useState({status: false, id: -1});
   const [type, setType] = useState(false);
   const [numberOfTasks, setNumberOfTasks] = useState(JSON.parse(localStorage.getItem('numberOfTasks'))===null?0:JSON.parse(localStorage.getItem('numberOfTasks')));
   console.log(numberOfTasks);
@@ -50,10 +52,11 @@ function App() {
       console.log(allTasks);
   }, [allTasks, numberOfTasks]);
 
-  // const updateTask = useCallback((new)=>
-  // {
-  //     console.log("Task Edited");
-  // }, []);
+  const editTask = useCallback((id)=>
+  {
+      console.log("edit task APP>JS");
+      setEditFormStatusAndId({status: true, id: id});
+  }, [editFormStatusAndId]);
 
   const deleteTask = useCallback((id)=>
   {
@@ -76,8 +79,9 @@ function App() {
       <Header />
       <FilterPanel/>
       <TaskNavTabs setType={updateType}/>
-      <TasksContainer type={type}  allTasks={allTasks} setDeleteId={deleteTask}/>
+      <TasksContainer type={type}  allTasks={allTasks} setDeleteId={deleteTask} setEditId={editTask}/>
       <BottomPanel addTask={addNewTask} numberOfTasks={numberOfTasks} />
+      {editFormStatusAndId.status   &&  <HiddenEditForm statusAndId={editFormStatusAndId} setEditFormStatusAndId={setEditFormStatusAndId}/>}
     </>
   );
 }

@@ -3,7 +3,7 @@ import Task from "./Task";
 import EmptyIcon from '@mui/icons-material/ErrorTwoTone';
 import '../css/TasksContainer.css';
 
-function TasksContainer({ type , setDeleteId}) {
+function TasksContainer({ type , setDeleteId, setEditId}) {
     console.log("Task container red=ndered");
 
     let allTasks = JSON.parse(localStorage.getItem('allData'));
@@ -18,10 +18,14 @@ function TasksContainer({ type , setDeleteId}) {
 
     const updateTaskStatus = useCallback((newStatus, id) =>
     {
-          const taskToUpdate = allTasks.find(task => task.id === id);
+        let taskToUpdate;
+        if(allTasks !== null)
+        {
+            taskToUpdate = allTasks.find(task => task.id === id);
+        } 
           taskToUpdate.status = newStatus;
           localStorage.setItem('allData', JSON.stringify(allTasks));
-    }, [type]);
+    }, [setEditId,setDeleteId, allTasks]);
 
     if((allTasks.length !== 0))
     {
@@ -33,12 +37,12 @@ function TasksContainer({ type , setDeleteId}) {
                         allTasks.map((task) => {
                             console.log("element 1 rendered");
                             return <div>
-                               { task.status===type && <Task task={task} updateTaskStatus={updateTaskStatus} setDeleteId={setDeleteId}/> }
+                               { task.status===type && <Task task={task} updateTaskStatus={updateTaskStatus} setDeleteId={setDeleteId} setEditId={setEditId}/> }
                             </div>
 
                         })
                     }
-    
+                        
                 </div>
     
             </>

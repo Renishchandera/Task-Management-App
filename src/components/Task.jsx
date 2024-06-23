@@ -5,19 +5,19 @@ import '../css/Task.css';
 import '../css/TaskText.css';
 import '../css/TaskActions.css';
 
-function Task({task, updateTaskStatus, setDeleteId})
+function Task({task, updateTaskStatus, setDeleteId, setEditId})
 {
     const [rerender, causeRender] = useState("");
 
-    const makeRender = useCallback(()=>
+    const makeRender = (x)=>
     {
-        causeRender("hervkj");
-    }, [rerender]);
+        causeRender(x);
+    }
 
     return (
         <div className={`task`}>
             <TaskText task={task} causeRender={makeRender}/>
-            <TaskActions task={task} causeRender={makeRender} updateTask={updateTaskStatus} setDeleteId={setDeleteId}/>
+            <TaskActions task={task} causeRender={makeRender} updateTask={updateTaskStatus} setDeleteId={setDeleteId} setEditId={setEditId}/>
         </div>
     );
 }

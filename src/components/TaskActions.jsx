@@ -5,15 +5,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useCallback } from 'react';
 
-function TaskActions({task, causeRender,updateTask, setDeleteId})
+function TaskActions({task, causeRender,updateTask, setDeleteId, setEditId})
 {   
      const handleMarkClick = useCallback((e)=>{
                 
                     console.log(`Marked as ${!task.status?"In":""} Completed`)
                     updateTask(!task.status, task.id);
                 
-                causeRender("qdwev");
-     })
+                causeRender(`math${Math.random()*2}`);
+     }, [causeRender, task.status]);
     //  const handleEditClick = useCallback(()=>
     //  {
     //         updateTask(task);
@@ -23,15 +23,21 @@ function TaskActions({task, causeRender,updateTask, setDeleteId})
     {
         setDeleteId(task.id);   
         task.id = -1;
-        causeRender("cdcds");
+        causeRender(`math${Math.random()*2}`);
     }, []);
+
+
+    const handleEditClick = useCallback(()=>
+    {
+            setEditId(task.id);
+    }, [task, setEditId]);
 
      { console.log("task Action Rendered");}
     return (
 
         <div className={`taskActionsContainer ${task.id===-1?"deleted":task.status?"completed":"pending"}`}>
             {(!task.status)&& <span className={"actionContainer"}
-              
+                onClick={handleEditClick}
             ><EditIcon className={"actionIcon editIcon"}/>&nbsp;Edit</span>}
             <br/>
             <span className={"actionContainer"}
