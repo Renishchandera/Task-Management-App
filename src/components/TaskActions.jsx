@@ -36,16 +36,16 @@ function TaskActions({task, causeRender,updateTask, setDeleteId, setEditId})
     return (
 
         <div className={`taskActionsContainer ${task.id===-1?"deleted":task.status?"completed":"pending"}`}>
-            {(!task.status)&& <span className={"actionContainer"}
+            {(!task.status)&& <span className={"actionContainer editAction"}
                 onClick={handleEditClick}
             ><EditIcon className={"actionIcon editIcon"}/>&nbsp;Edit</span>}
             <br/>
-            <span className={"actionContainer"}
+            <span className={"actionContainer deleteAction"}
                 onClick={handleDeleteClick}
             ><DeleteIcon className={"actionIcon deleteIcon"}/>&nbsp;Delete</span>
             <br/>
            { 
-            <span className={"actionContainer"}
+            <span className={"actionContainer markAction"}
             onClick={handleMarkClick}
              ><CheckCircleOutlineIcon className={"actionIcon markCompletedIcon"}/> {task.id===-1?"Deleted":(task.status ?"Mark As Pending":"Mark As Completed")}</span>
            }

@@ -6,18 +6,19 @@ function TaskText({task})
 
     return (
        <div className={"taskTextContainer"}>
-            <div>
-            <span>Added :  {task.DT.year}/{task.DT.month}/{task.DT.date}, {task.DT.hours}:{task.DT.minutes}, {task.DT.day}</span>
+            <div className={"taskTextLeft"}>
             <br/>
-            <span>{task.title}</span>
+            <span><span className={"titleTitle"}>Title : </span><span>{task.title}</span></span>
             <br/>
-            <span>{task.des}</span>
+            <span><span className={"descriptionTitle"}>Description : </span><span>{task.des}</span></span>
             <br/>
-            <span>{task.category}</span>
             </div>
-            <div>
+            <div className={"taskTextRight"}>
+            <span className={"category"}><span className={"categoryTitle"}>CATEGORY</span><span>{task.category}</span></span>
+            <span className={"addedAt"}>{task.DT.date}/{task.DT.month}/{task.DT.year}</span>
+                <span className={`taskStatus ${task.status?'completedText':'pendingText'}`}>
                 {task.id===-1?"DELETED SUCCESSFULLY":(task.status ? "COMPLETED" : "PENDING")}
-                {task.id}
+                </span>
             </div>
        </div>
     );

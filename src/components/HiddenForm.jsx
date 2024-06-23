@@ -67,7 +67,7 @@ function HiddenForm({ status, updateFormStatus, setNewTask }) {
                     </div>
                     <div>
                         <label htmlFor={"taskDescriptionId"}>Task Description</label>
-                        <input type={"text"} placeholder={"Enter Task Description"} className={"taskDescription"} id={"taskDescriptionId"} name={"des"} onChange={handleChange} required></input>
+                        <input type={"text"}  placeholder={"Enter Task Description"} className={"taskDescription"} id={"taskDescriptionId"} name={"des"} onChange={handleChange} required></input>
                     </div>
                     <div>
                        <Box className={""} onClick={handleSubmit}>Add Task

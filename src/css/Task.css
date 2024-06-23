@@ -1,9 +1,24 @@
 
-
-@media screen and (max-width: 450px)
+.task
+{
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #072e33;
+    width: 60vw;
+    transition: 0.4s all ease;
+    margin: 2rem;
+}
+.task:hover
+{
+    box-shadow: 0px 5px 5px #072e33;
+}
+@media screen and (max-width: 750px)
 {
     .task
     {
-        width: 95%;
+        margin: 0.5rem 0;
+        width: 90vw;
     }
 }

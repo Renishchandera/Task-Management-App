@@ -2,12 +2,80 @@
 {
     text-align: center;
     display: flex;
+    padding: 1rem;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
+    background-color:   #05161A;
+    color: #8cd6fb;
+    border-bottom: 2px solid #6da5C0;
+}
+.headerText
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.headerText
+{
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.headerText h4
+{
+    font-size: medium;
+    margin-top: 0.5rem;
 }
 .aboutUsBtn
 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
+    transition: 0.4s all ease;
+    padding: 0.75rem;
+    font-weight: 600;
     right: 4rem;
+    border-radius: 1rem;
+    border: 1px solid #6da5C0;
+}
+.aboutUsBtn:hover
+{
+    transform: translateY(-2px);
+    background-color:   #114c59;
+    cursor: pointer;
+}
+.aboutUsBtn:active
+{
+    transform: translateY(2px);
+}
+
+@media screen and (max-width: 700px)
+{
+    .headerContainer
+    {
+        justify-content: space-between;
+    }
+    .headerText
+    {
+        font-size: medium;
+    }
+    .aboutUsBtn
+    {
+        font-size: x-small;
+        width: min-content;
+        height: min-content;
+        padding: 0.25rem;
+        right: 1rem;
+    }
+}
+@media screen and (max-width: 310px)
+{
+    .aboutUsBtn
+    {
+        font-size: 0px;
+        right: 0.25rem;
+        top: 0.5rem;
+    }
 }

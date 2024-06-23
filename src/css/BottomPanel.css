@@ -1,12 +1,54 @@
 .bottomPanel
 {
-    color: green;
-    background-color: beige;
+    color: whitesmoke;
+    background-color: #05161a;
     position: sticky;
     bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     font-weight: 900;
     font-size: larger;
+    padding: 0.25rem 0;
+}
+
+.addTaskContainer,.resetContainer
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 0.1s all ease;
+    border-radius: 2rem;
+}
+/* .bottomFab
+{
+
+    background-color: #6da5c0;
+    border-radius: 50%;
+    padding: 0.2em;
+} */
+.resetContainer:hover
+{
+    color: #dca1a1;
+    background-color: #3a5d65;
+}
+.addTaskContainer:hover
+{
+    color: #02a8b1;
+    background-color: #3a5d65;
+}
+
+@media screen and (max-width: 600px)
+{
+    .addTaskContainer,.resetContainer
+    {
+        font-size: small;
+        padding: 0.25rem;
+    }
+    .bottomPanel
+    {
+        padding: 0.1rem 0;
+    }
 }

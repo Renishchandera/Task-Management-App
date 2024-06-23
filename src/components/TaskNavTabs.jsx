@@ -22,8 +22,8 @@ function TaskNavTabs({setType})
     return (
         <>
             <div className={"tabsContainer"}>
-                <div className={`tab pendingTab ${activePanel==="pending"?"active":""}`} onClick={handleClick1}><span><PendingIcon color="secondary" fontSize="medium"/></span><span>Pending Tasks</span></div>
-                <div className={`tab completedTab ${activePanel==="completed"?"active":""}`} onClick={handleClick2}><span><CompletedIcon color="success"  fontSize='medium'/>  </span><span>Completed Tasks</span></div>
+                <div className={`tab pendingTab ${activePanel==="pending"?"active":""}`} onClick={handleClick1}><span><PendingIcon className={"pendingIcon"} fontSize="medium"/></span><span>Pending Tasks</span></div>
+                <div className={`tab completedTab ${activePanel==="completed"?"active":""}`} onClick={handleClick2}><span><CompletedIcon  className={"completedIcon"} fontSize='medium'/>  </span><span>Completed Tasks</span></div>
             </div>
         </>
     );

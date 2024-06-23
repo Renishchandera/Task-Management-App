@@ -1,14 +1,16 @@
 import { memo } from 'react';
+import SortIcon from '@mui/icons-material/Sort';
+import FilterIcon from '@mui/icons-material/FilterAlt';
 import '../css/FilterPanel.css';
 function FilterPanel()
 {
     return (
         <>
             <div className={"filterPanelContainer"}>
-               <span className={"filterIcon"}><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/></svg>
-                    Sort</span>
-                <span className={"filterIcon"}><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></svg>
-                    Filter</span>
+               <span className={"filterIcon"}>
+                  <SortIcon fontSize={"large"}/>  Sort</span>
+                <span className={"filterIcon"}>
+                   <FilterIcon fontSize={"large"}/> Filter</span>
             </div>
         </>
     );

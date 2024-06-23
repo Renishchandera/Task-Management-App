@@ -3,7 +3,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border: 2px solid grey;
+    border: none;
+    border-bottom: 1px solid #6da5C0;
 }
 .filterIcon
 {
@@ -13,9 +14,19 @@
     margin: 0.5rem 2rem;
     padding: 0 1rem;
     border-radius: 1rem;
+    color: #8cd6fb;
+    font-weight: 600;
     transition: 0.2s all ease-in-out;
 }
 .filterIcon:hover
 {
-    background-color: darkgray;
+    background-color: #05161a;
+}
+
+@media screen and (max-width: 320px) {
+
+    .filterIcon
+    {
+        margin: 0.25rem 1rem;
+    }
 }

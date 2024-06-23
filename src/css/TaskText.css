@@ -1,10 +1,85 @@
 .taskTextContainer
 {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: whitesmoke;
+    background-color: transparent;
+}
+.taskTextRight
+{
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 90vw;
-    border: 2px solid black;
-    background-color: aqua;
+    margin: 1rem;
+    justify-content: space-between;
+    font-weight: 400;
+    color: #8cd6fb;
+}
+.taskTextRight span
+{
+    margin: 4px;
+}
+.category
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid grey;
+}
+.addedAt
+{
+    border-bottom: 2px solid grey;
+    color: aliceblue;
+    padding-bottom: 0.5rem;
+}
+.categoryTitle
+{
+    font-weight: 600;
+}
+.taskStatus.pendingText
+{
+    color: yellow;
+}
+.taskStatus.completedText
+{
+    color: rgb(0, 203, 0);
+}
+.taskTextLeft
+{
+    margin: 1rem;  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+   font-size: large;
+   font-weight: 700;
+}
+.titleTitle,.descriptionTitle
+{
+    color: #8cd6fb;
+    margin-bottom: 8px;
+    font-size: x-large;
+}
+.categoryTitle
+{
+    color: #8cd6fb;
+}
+
+@media screen and (max-width: 550px)
+{
+    .taskTextLeft
+    {
+        font-size: x-small;
+        margin: 0.5rem;
+    }
+    .taskTextRight
+    {
+        font-size: small;
+        margin: 0.5rem;
+    }
+    .titleTitle, .descriptionTitle
+    {
+        font-size: small;
+    }
 }
