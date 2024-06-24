@@ -1,12 +1,13 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import Task from "./Task";
 import EmptyIcon from '@mui/icons-material/ErrorTwoTone';
 import '../css/TasksContainer.css';
 
 function TasksContainer({ type , setDeleteId, setEditId, filter}) {
     console.log("Task container red=ndered");
+    let allTasks;
 
-    let allTasks = JSON.parse(localStorage.getItem('allData'));
+        allTasks =  JSON.parse(localStorage.getItem('allData'));
     if(allTasks === null)
     {
         allTasks = [];
@@ -19,6 +20,7 @@ function TasksContainer({ type , setDeleteId, setEditId, filter}) {
     {
         allTasks = allTasks.sort((a,b) => a.id > b.id);
     }
+
     // const updateTask = useCallback((new) =>
     // {
     //     editTask(new)
@@ -27,12 +29,14 @@ function TasksContainer({ type , setDeleteId, setEditId, filter}) {
     const updateTaskStatus = useCallback((newStatus, id) =>
     {
         let taskToUpdate;
+        console.log("Updaetin g task status");
         if(allTasks !== null)
         {
             taskToUpdate = allTasks.find(task => task.id === id);
         } 
           taskToUpdate.status = newStatus;
           localStorage.setItem('allData', JSON.stringify(allTasks));
+          console.log("Task Status Updated In Local Also BC :{");
     }, [setEditId,setDeleteId, allTasks]);
 
     if((allTasks.length !== 0))
