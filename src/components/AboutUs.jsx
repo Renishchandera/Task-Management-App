@@ -16,7 +16,7 @@ function AboutUs({status, setStatus})
                         <div className={'aboutApp'}>
                                 <h4>About This App</h4>
                                 <p>This Is A Simple Task Management App made using The React. 
-                                    This App uses the browser localStorage API to store task, there not any backend 
+                                    This App uses the browser localStorage API to store task, there is not any backend 
                                     server integration for now. This is the Project to showcase and practice the front-end technologies
                                     like HTML5, CSS3, javaScript, React, Material UI.
                                 </p>
