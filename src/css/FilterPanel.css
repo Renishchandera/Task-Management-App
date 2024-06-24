@@ -6,36 +6,7 @@
     border: none;
     border-bottom: 1px solid #6da5C0;
 }
-.sortMenu
-{
-    height: 2rem;
-    font-weight: 600;
-    color: #6da5C0;
-    border-radius: 2rem;
-    background-color: #05161a;
-    outline: none;
-}
-.filterIcon
-{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0.5rem 2rem;
-    padding: 0 1rem;
-    border-radius: 1rem;
-    color: #8cd6fb;
-    font-weight: 600;
-    transition: 0.2s all ease-in-out;
-}
-.filterIcon:hover
-{
-    background-color: #05161a;
-}
 
 @media screen and (max-width: 320px) {
 
-    .filterIcon
-    {
-        margin: 0.25rem 1rem;
-    }
 }

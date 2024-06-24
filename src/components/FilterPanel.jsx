@@ -5,20 +5,20 @@ import '../css/FilterPanel.css';
 function FilterPanel({ setFilter }) {
 
     const filterChange = useCallback((e) => {
-        setFilter({ type: 'Sort', subType: (e.target.value) });
+        const subType = e.target.value;
+        setFilter({ type: 'Sort', subType: subType});
         console.log("Filter changed");
     }, []);
     return (
         <>
             <div className={"filterButtonContainer"}>
                 <select className={"sortMenu"} onChange={filterChange}>
-                    <option selected disabled value={'RecentlyAdded'}>SORT BY</option>
-                    <option value={"RecentlyAdded"}>Recently Added</option>
+                    <option value={"RecentlyAdded"} selected >Recently Added</option>
                     <option value={"FirstAdded"}>First Added</option>
                 </select>
                 <div>
-                    <span className={"filterIcon"}>
-                        <FilterIcon fontSize={"large"} /> Filter</span>
+                    {/* <span className={"filterIcon"}>
+                        <FilterIcon fontSize={"large"} /> Filter</span> */}
                 </div>
                 </div>
 
