@@ -78,7 +78,7 @@ function App() {
   return (
     <>
       <Header />
-      <FilterPanel setFilter={setFilter}/>
+      {/* <FilterPanel setFilter={setFilter}/> */}
       <TaskNavTabs setType={updateType}/>
       <TasksContainer type={type}  allTasks={allTasks} setDeleteId={deleteTask} setEditId={editTask} filter={filter}/>
       <BottomPanel addTask={addNewTask} numberOfTasks={numberOfTasks} />
