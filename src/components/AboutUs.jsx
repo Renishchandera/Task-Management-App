@@ -33,8 +33,9 @@ function AboutUs({status, setStatus})
                                     If you have any queries or want to personally discuss anything with me or for collaboration you can Contact me from below.
                                 </p>
                                 <nav className={'aboutNav'}>
-                                    <a href={"https://www.Linkedin.in"} target={'_blank'}><LinkedInIcon /></a>
-                                    <a href={"https://www.instagram.com/Renish_Chandera"} target={'_blank'}><InstaIcon /></a>
+                                    <a href={"https://www.Linkedin.in/Renish Chandera"} target={'_blank'}><LinkedInIcon /></a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href={"https://www.instagram.com/renish_chandera_"} target={'_blank'}><InstaIcon /></a>
                                 </nav>
 
                         </div>
