@@ -3,43 +3,50 @@ import ResetIcon from '@mui/icons-material/DeleteForeverRounded';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import HiddenForm from './HiddenForm';
+import {useDispatch, useSelector} from 'react-redux';
 import '../css/BottomPanel.css';
-import { memo, useState, useCallback } from 'react';
+import { memo, useCallback } from 'react';
+import { addTaskReducer, changeFormState , displayPopUpReducer, resetReducer} from '../Features/taskCRUD/taskCRUDSlice';
 
-function BottomPanel({ addTask, numberOfTasks }) {
+
+const PopUpMessage = memo( () =>
+{
+  const popUpMessage = useSelector(state => state.popUp.text);
+  return (
+    <>
+      <small className='popUpMessage'>{popUpMessage}</small>
+    </>
+  )
+})
+
+
+function BottomPanel() {
+
+  const dispatch = useDispatch();
+  const popUpStatus = useSelector(state => state.popUp.status);
+  const setPopUp = setTimeout(() =>
+  {
+    console.log("Inside Time Out");
+    dispatch(displayPopUpReducer({status: false, text: 'Default PopUp'}))
+    clearInterval(setPopUp);
+  }, 2000);
+
+
 
   const handleResetClick = useCallback(() => {
     let x = prompt("Want to Delete All Tasks (Pending and Completed) ? (yes/no)");
     if (x === "yes") {
-      localStorage.clear();
-      alert("All Cleared !!");
+      dispatch(resetReducer(true));
+      dispatch(displayPopUpReducer({status: true, text: "All Storage Cleared !! Add New Tasks."}))
     }
   }, []);
-  const [formStatus, setFormStatus] = useState(false);
+
   const handleClick = useCallback(() => {
-    console.log("Task ADDED");
-    setFormStatus(true);
+    dispatch(changeFormState(true));
   }, [])
 
-  console.log(numberOfTasks);
-  const setNewTask = useCallback((newTask) => {
-    console.log("FUCK YOU REACT");
-    console.log(numberOfTasks);
-    addTask({
-      status: false,
-      des: newTask.des,
-      title: newTask.title,
-      category: newTask.category,
-      id: numberOfTasks + 1,
-      DT: newTask.dateNTime,
-    });
+  
 
-  }, [numberOfTasks, addTask]);
-
-
-  const updateFormStatus = useCallback((x) => {
-    setFormStatus(x);
-  }, []);
 
   return (
     <>
@@ -64,7 +71,8 @@ function BottomPanel({ addTask, numberOfTasks }) {
             </Box>
           <span className={"text bottomPanelText"}>Delete ALL</span>
         </div>
-        <HiddenForm status={formStatus} updateFormStatus={updateFormStatus} setNewTask={setNewTask} />
+        { popUpStatus === true && <PopUpMessage/> }
+        <HiddenForm  />
       </div>
 
     </>

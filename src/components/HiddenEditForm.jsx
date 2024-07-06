@@ -4,22 +4,30 @@ import EditIcon from '@mui/icons-material/ChangeCircle';
 import CloseIcon from '@mui/icons-material/CloseRounded'
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
+import {useSelector , useDispatch} from 'react-redux';
 import { useCallback } from 'react';
+import { changeEditFormState, displayPopUpReducer, updateTaskReducer } from '../Features/taskCRUD/taskCRUDSlice';
 
-function HiddenEditForm({ statusAndId, setEditFormStatusAndId }) {
+function HiddenEditForm() {
 
-    let taskToEdit = useRef({});
-    let allData = useRef([]);
+    const dispatch = useDispatch();
 
+    let taskId = useSelector(state => state.editFormState.id);
+    console.log(taskId)
+    let allData = useSelector(state => state.tasks);
+    console.log(allData);
+    let taskToEdit =  (allData.length === 0 ? {} : allData.find((task) => task.id === taskId));
     console.log("Hidden Edit From Rendered");
 
     const [inputs, setInputs] = useState({});
-    useEffect(() => {
-        console.log("USE EFFTECT");
-        allData.current = JSON.parse(localStorage.getItem('allData'));
-        taskToEdit.current = allData.current.find((task) => task.id === statusAndId.id);
-        setInputs({ title: taskToEdit.current.title, des: taskToEdit.current.des, category: taskToEdit.current.category });
-    }, []);
+
+
+        useEffect(() => {
+            console.log("USE EFFTECT");
+            if(taskId !== -1)
+                setInputs({ title: taskToEdit.title, des: taskToEdit.des, category: taskToEdit.category });
+        }, [taskId]);
+    
 
     const handleChange = (e) => {
         console.log("handle change");
@@ -33,23 +41,30 @@ function HiddenEditForm({ statusAndId, setEditFormStatusAndId }) {
 
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
-        console.log(taskToEdit.current);
+        console.log(taskToEdit);
         console.log(inputs);
-        taskToEdit.current.des = inputs.des;
-        taskToEdit.current.title = inputs.title;
-        taskToEdit.current.category = inputs.category;
-        console.log(taskToEdit.current);
-        localStorage.setItem('allData', JSON.stringify(allData.current));
+        const newTask = Object.assign({}, taskToEdit);
+        newTask.des = inputs.des;
+        newTask.title = inputs.title;
+        newTask.category = inputs.category;
+        console.log(newTask);
+        dispatch(updateTaskReducer(newTask));
+        dispatch(displayPopUpReducer({status: true, text:  `Task Edited -> ${newTask.title}`}))
+        setInputs({});
         console.log("Task EDITED SUCCESSFULLUU");
         console.log("Handle Submit");
         handleCloseClick();
     }, [inputs]);
 
     const handleCloseClick = useCallback(() => {
-        setEditFormStatusAndId({ status: false, id: -1 });
+        console.log("ClOSED")
+        dispatch(changeEditFormState({ status: false, id: -1 }));
     }, []);
 
-    if (statusAndId.status) {
+
+    const formStatusAndId = useSelector(state => state.editFormState);
+
+    if (formStatusAndId.status && formStatusAndId.id != -1) {
         return (
             <>
                 <form className={"taskAddForm"} onSubmit={handleSubmit} id={"form"}>
@@ -63,20 +78,20 @@ function HiddenEditForm({ statusAndId, setEditFormStatusAndId }) {
                         <div>
                             <label htmlFor={"taskTitleId"}>Task Title</label>
                             <input type='text' placeholder={"Enter Task Title"} value={
-                                inputs.title
+                                inputs.title ?? ''
                             } className={"taskTitle"} id={"taskTitleId"} name={"title"} onChange={handleChange} required></input>
                         </div>
 
                         <div>
                             <label htmlFor={"taskCategoryId"}>Task Category</label>
                             <input type={"text"} placeholder={"Enter Task Category"} value={
-                                inputs.category
+                                inputs.category ?? ''
                             } className={"taskCategory"} id={"taskCategoryId"} name={"category"} onChange={handleChange} required></input>
                         </div>
                         <div>
                             <label htmlFor={"taskDescriptionId"}>Task Description</label>
                             <input type={"text"} placeholder={"Enter Task Description"} value={
-                                inputs.des
+                                inputs.des ?? ''
                             } className={"taskDescription"} id={"taskDescriptionId"} name={"des"} onChange={handleChange} required></input>
                         </div>
                         <div>

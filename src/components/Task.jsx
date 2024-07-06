@@ -5,7 +5,7 @@ import '../css/Task.css';
 import '../css/TaskText.css';
 import '../css/TaskActions.css';
 
-function Task({task, updateTaskStatus, setDeleteId, setEditId})
+function Task({task})
 {
     const [rerender, causeRender] = useState("");
 
@@ -16,8 +16,8 @@ function Task({task, updateTaskStatus, setDeleteId, setEditId})
 
     return (
         <div className={`task`}>
-            <TaskText task={task} causeRender={makeRender}/>
-            <TaskActions task={task} causeRender={makeRender} updateTask={updateTaskStatus} setDeleteId={setDeleteId} setEditId={setEditId}/>
+            <TaskText task={task}/>
+            <TaskActions task={task} causeRender={makeRender} />
         </div>
     );
 }

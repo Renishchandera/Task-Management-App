@@ -1,11 +1,17 @@
 import { memo,useState, useMemo, useCallback } from 'react';
 import CloseIcon from '@mui/icons-material/CloseSharp';
 import AddIcon from '@mui/icons-material/AddCircleRounded';
+import { addTaskReducer, changeFormState, displayPopUpReducer } from '../Features/taskCRUD/taskCRUDSlice';
+import {useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import '../css/HiddenForm.css';
 
-function HiddenForm({ status, updateFormStatus, setNewTask }) {
+function HiddenForm( setNewTask ){
+
+    const n = useSelector(state => state.n);
+    const dispatch = useDispatch();
+    const formState = useSelector(state => state.formState);
 
     console.log("Hidden Form Rendered");
     const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -19,9 +25,12 @@ function HiddenForm({ status, updateFormStatus, setNewTask }) {
         setInputs(values => ({...values, [name]: value, [name]: value, [name]: value}));
     }, []);
 
+     
+
+
     const handleCloseClick = useCallback( () =>
     {
-        updateFormStatus(false);
+        dispatch(changeFormState(false));
     }, []);
 
     const handleSubmit = useCallback((e)=>
@@ -37,16 +46,26 @@ function HiddenForm({ status, updateFormStatus, setNewTask }) {
                 month: String(now.getMonth()+1).padStart(2, '0'),     
         };
 
-        setNewTask(inputs);
+        console.log("FUCK YOU REACT");
+        console.log(n);
+        dispatch(addTaskReducer({
+          status: false,
+          des: inputs.des,
+          title: inputs.title,
+          category: inputs.category,
+          id: n + 1,
+          DT: inputs.dateNTime,
+        }))
+        dispatch(displayPopUpReducer({status: true, text: "New Task Added"}))
         console.log("Hnalde submit");
         console.log("Submited inputsw now closing");
         handleCloseClick();
-    }, [status,inputs]);
+    }, [formState,inputs]);
 
    
 
 
-    if (status) {
+    if (formState) {
         return (
             <form className={"taskAddForm"} onSubmit={handleSubmit} id={"form"}>
                 <div className={"formContainer"}>

@@ -1,36 +1,38 @@
 import { memo, useState, useContext } from 'react';
 import '../css/TaskActions.css';
+import { useDispatch } from 'react-redux';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useCallback } from 'react';
+import { changeEditFormState, deleteTaskReducer, displayPopUpReducer, updateTaskReducer } from '../Features/taskCRUD/taskCRUDSlice';
 
-function TaskActions({task, causeRender,updateTask, setDeleteId, setEditId})
+function TaskActions({task, causeRender})
 {   
+    const dispatch = useDispatch();
+
      const handleMarkClick = useCallback((e)=>{
                 
                     console.log(`Marked as ${!task.status?"In":""} Completed`)
-                    updateTask(!task.status, task.id);
-                
+                dispatch(updateTaskReducer({...task, status: !task.status}))
+                dispatch(displayPopUpReducer({status: true, text: `Task Marked as ${task.status?"Pending":"Completed"} -> ${task.title}`}));
                 causeRender(`math${Math.random()*2}`);
      }, [causeRender, task.status]);
-    //  const handleEditClick = useCallback(()=>
-    //  {
-    //         updateTask(task);
-    //  });
+   
 
     const handleDeleteClick = useCallback(()=>
     {
-        setDeleteId(task.id);   
-        task.id = -1;
+      //  let conf = prompt(`Are You Sure to Delete the ${task.status?'COMPLETED':'PENDING'} Task : ${task.title}`);
+      dispatch(deleteTaskReducer(task.id));
+      dispatch(displayPopUpReducer({status:true, text:`Task Deleted !! -> ${task.title}`}));
         causeRender(`math${Math.random()*2}`);
     }, []);
 
 
     const handleEditClick = useCallback(()=>
     {
-            setEditId(task.id);
-    }, [task, setEditId]);
+        dispatch(changeEditFormState({status: true, id: task.id}));
+    }, [task.id]);
 
      { console.log("task Action Rendered");}
     return (
