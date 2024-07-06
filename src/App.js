@@ -13,7 +13,7 @@ function App() {
   const [filter, setFilter] = useState({type: 'Sort', subType: 'RecentlyAdded'});
 
   const [appVersion , setAppVersion] = useState(JSON.parse(localStorage.getItem('version')));
-  let isUpdated = appVersion !== '2' ?true:false;
+  let isUpdated = appVersion !== '3' ?true:false;
   
 
   const updateType = useCallback((t) =>

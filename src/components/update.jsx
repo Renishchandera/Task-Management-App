@@ -1,5 +1,6 @@
 import {useDispatch, useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
+import { resetReducer } from '../Features/taskCRUD/taskCRUDSlice';
 
 function AlignUpdates({setStatus})
 {
@@ -9,12 +10,12 @@ function AlignUpdates({setStatus})
     const n = useSelector(state => state.n);
 
     const handleAlignUpdates = useCallback( () => {
-        localStorage.clear();
+        dispatch(resetReducer());
         localStorage.setItem('allData', JSON.stringify(allTasks));
         localStorage.setItem('numberOfTasks', JSON.stringify(n));
         alert("Updates Aligned SuccessFully You can Continue using app normally");
-        localStorage.setItem('version', JSON.stringify('2'));
-        setStatus('2');
+        localStorage.setItem('version', JSON.stringify('3'));
+        setStatus('3');
     }, []);
 
     return (
@@ -22,6 +23,10 @@ function AlignUpdates({setStatus})
             <div style={
                 {
                     backgroundColor:  '#8cd6fba9',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '2rem',
                     color: '#05161A',
                     width: '100vw',
                     height: '100vh',
