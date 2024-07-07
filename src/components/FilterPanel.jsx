@@ -18,7 +18,7 @@ function FilterPanel( ) {
             <div className={"filterButtonContainer"}>
                <div>
                 <SortIcon fontSize={"large"}/>
-                    <select className={"sortMenu"} onChange={filterChange} defaultValue={'Sort By'}>
+                    <select className={"sortMenu"} onChange={filterChange} defaultValue={'Sort By'} style={{backgroundColor: 'var(--background-color', color: 'var(--text-color)'}}>
                         <option value={'Sort'} disabled >Sort By</option>
                         <option value={"First"}  >Recently Added</option>
                         <option value={"Last"} >First Added</option>

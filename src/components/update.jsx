@@ -23,7 +23,7 @@ function AlignUpdates({setStatus})
         <>
             <div style={
                 {
-                    backgroundColor:  'var(--background-color2)',
+                    backgroundColor:  'var(--background-color)',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -47,7 +47,7 @@ function AlignUpdates({setStatus})
                 <br/>
                  <ul>
                         <li>You can Now sort the tasks based on Recent and First Added for better task control.</li>
-                        <li>Dark & Light Theme feature for your comfor.</li>
+                        <li>Dark & Light Theme feature for your comfort.</li>
                         <li>Enhanced UI for Sleek Experience.</li>
                         <li>Pop Up message for different actions.</li>
                     </ul> 
