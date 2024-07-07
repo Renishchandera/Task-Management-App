@@ -2,6 +2,7 @@ import { memo,useState, useCallback } from 'react';
 import AboutUs from './AboutUs';
 import AboutUsIcon from '@mui/icons-material/InfoTwoTone';
 import '../css/Header.css';
+import ThemeToggle from './ThemeToggle';
 
  function Header()
  {

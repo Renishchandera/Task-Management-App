@@ -12,9 +12,9 @@ function HiddenEditForm() {
 
     const dispatch = useDispatch();
 
-    let taskId = useSelector(state => state.editFormState.id);
+    let taskId = useSelector(state => state.taskCRUD.editFormState.id);
     console.log(taskId)
-    let allData = useSelector(state => state.tasks);
+    let allData = useSelector(state => state.taskCRUD.tasks);
     console.log(allData);
     let taskToEdit =  (allData.length === 0 ? {} : allData.find((task) => task.id === taskId));
     console.log("Hidden Edit From Rendered");
@@ -62,7 +62,7 @@ function HiddenEditForm() {
     }, []);
 
 
-    const formStatusAndId = useSelector(state => state.editFormState);
+    const formStatusAndId = useSelector(state => state.taskCRUD.editFormState);
 
     if (formStatusAndId.status && formStatusAndId.id != -1) {
         return (
@@ -95,7 +95,7 @@ function HiddenEditForm() {
                             } className={"taskDescription"} id={"taskDescriptionId"} name={"des"} onChange={handleChange} required></input>
                         </div>
                         <div>
-                            <Box className={""} onClick={handleSubmit}>Edit Task
+                            <Box className={"submitBtn"} onClick={handleSubmit}>Edit Task
                                 <Fab color="success" aria-label="add" size={"small"}>
                                     <label htmlFor={"submit"} style={{ margin: "0", padding: "0", position: "absolute", top: "25%", bottom: "50%" }}> <EditIcon /></label>
                                 </Fab>

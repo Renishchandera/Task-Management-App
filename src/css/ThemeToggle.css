@@ -1,0 +1,11 @@
+.themeToggleBtn:first-child
+{
+    color: var(--text-color);
+    margin-left: 2rem;
+   font-size: large;
+   transition: 0.3s all ease;
+}
+.themeToggleBtn:first-child:hover
+{
+    transform: rotateZ(10deg);
+}

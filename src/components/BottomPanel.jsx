@@ -11,7 +11,7 @@ import { addTaskReducer, changeFormState , displayPopUpReducer, resetReducer} fr
 
 const PopUpMessage = memo( () =>
 {
-  const popUpMessage = useSelector(state => state.popUp.text);
+  const popUpMessage = useSelector(state => state.taskCRUD.popUp.text);
   return (
     <>
       <small className='popUpMessage'>{popUpMessage}</small>
@@ -23,7 +23,7 @@ const PopUpMessage = memo( () =>
 function BottomPanel() {
 
   const dispatch = useDispatch();
-  const popUpStatus = useSelector(state => state.popUp.status);
+  const popUpStatus = useSelector(state => state.taskCRUD.popUp.status);
   const setPopUp = setTimeout(() =>
   {
     console.log("Inside Time Out");

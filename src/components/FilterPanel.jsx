@@ -1,30 +1,36 @@
 import { memo, useCallback } from 'react';
 import SortIcon from '@mui/icons-material/Sort';
 import FilterIcon from '@mui/icons-material/FilterAlt';
+import ThemeToggle from './ThemeToggle';
+import { useDispatch } from 'react-redux';
 import '../css/FilterPanel.css';
-function FilterPanel({ setFilter }) {
-
+import { sortReducer } from '../Features/Filter&Sort/filterSlice';
+function FilterPanel( ) {
+    const dispatch = useDispatch();
     const filterChange = useCallback((e) => {
-        const subType = e.target.value;
-        setFilter({ type: 'Sort', subType: subType});
-        console.log("Filter changed");
-    }, []);
+            dispatch(sortReducer({type: 'sort', subType: e.target.value}))
+            console.log('Filter Changed')
+    }, [dispatch]);
+
+
     return (
         <>
             <div className={"filterButtonContainer"}>
-                <select className={"sortMenu"} onChange={filterChange}>
-                    <option value={"RecentlyAdded"} selected >Recently Added</option>
-                    <option value={"FirstAdded"}>First Added</option>
-                </select>
+               <div>
+                <SortIcon fontSize={"large"}/>
+                    <select className={"sortMenu"} onChange={filterChange} defaultValue={'Sort By'}>
+                        <option value={'Sort'} disabled >Sort By</option>
+                        <option value={"First"}  >Recently Added</option>
+                        <option value={"Last"} >First Added</option>
+                    </select>
+               </div>
                 <div>
-                    {/* <span className={"filterIcon"}>
-                        <FilterIcon fontSize={"large"} /> Filter</span> */}
+                <ThemeToggle/>
                 </div>
-                </div>
+            </div>
 
             </>
             );
 }
 
-
-            export default memo(FilterPanel);
+export default memo(FilterPanel);

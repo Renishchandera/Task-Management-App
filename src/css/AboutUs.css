@@ -6,21 +6,24 @@
     top: 0;
     left: 0;
     z-index: 2;
-    background-color: #05161acd;
+    background-color: var(--background-color2);
+    font-weight: 700;
+    color: var(--text-color);
 }
 .aboutUsOverlay .closeAboutIcon
 {
    font-size: 5rem;
    border-radius: 50%;
-   color: #ff6a6a;
-   background-color: #294d61;
-   border: 1px solid rgb(255, 219, 219);
+   color: var(--text-color);
+   background-color: var(--secondary);
+   border: 1px solid var(--primary);
    margin: 2rem;
    transition: 0.3s all ease;
 }
 .aboutUsOverlay .closeAboutIcon:hover
 {
-    background-color: #ff6a6a69;
+    background-color: var(--close-red);
+    color: var(--primary);
 }
 .aboutUsMain
 {
@@ -34,9 +37,9 @@
 .aboutNav a
 {
     font-size: x-large;
-    color: #ffffff;
+    color: var(--text-color);
 }
 .aboutNav a:hover
 {
-    color: #294d61;
+    color: var(--text-color);
 }

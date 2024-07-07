@@ -1,0 +1,23 @@
+:root{
+    --text-color: #001B2C;
+    --background-color: #D9EDF8;
+    --background-color2: #d9edf8b9;
+    --pending: #A5AEF4;
+    --primary: #004A94;
+    --success: #18A558;
+    --secondary: #43C3DD;
+    --close-red: #D33860;
+}
+
+[data-theme='dark']{
+    --text-color: #D9EDF8;;
+    --background-color: #001B2C;
+    --background-color2: #001b2cb9;
+    --close-red: #D33860;
+    --pending: #5f72ff;
+    --success: #18A558;
+    /* --secondary: #004A94;
+    --primary: #43C3DD; */
+    --secondary: #002e48;
+    --primary: #00a2ff;
+}

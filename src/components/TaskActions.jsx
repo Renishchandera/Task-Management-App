@@ -47,7 +47,7 @@ function TaskActions({task, causeRender})
             ><DeleteIcon className={"actionIcon deleteIcon"}/>&nbsp;Delete</span>
             <br/>
            { 
-            <span className={"actionContainer markAction"}
+            <span className={`actionContainer markAction ${task.status?'pendingMarkAction': 'completedMarkAction'}`}
             onClick={handleMarkClick}
              ><CheckCircleOutlineIcon className={"actionIcon markCompletedIcon"}/> {task.id===-1?"Deleted":(task.status ?"Mark As Pending":"Mark As Completed")}</span>
            }

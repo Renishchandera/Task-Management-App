@@ -4,7 +4,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: whitesmoke;
+    color: var(--text-color);
+    border-radius: 1rem;
     background-color: transparent;
 }
 .taskTextRight
@@ -15,7 +16,7 @@
     margin: 1rem;
     justify-content: space-between;
     font-weight: 400;
-    color: #8cd6fb;
+    color: var(--text-color);
 }
 .taskTextRight span
 {
@@ -26,12 +27,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid var(--primary);
 }
 .addedAt
 {
-    border-bottom: 2px solid grey;
-    color: aliceblue;
+    border-bottom: 2px solid var(--secondary);
+    color: var(--text-color);
     padding-bottom: 0.5rem;
 }
 .categoryTitle
@@ -40,11 +41,13 @@
 }
 .taskStatus.pendingText
 {
-    color: yellow;
+    color: var(--pending);
+    font-weight: 700;
 }
 .taskStatus.completedText
 {
-    color: rgb(0, 203, 0);
+    color: var(--success);
+    font-weight: 700;
 }
 .taskTextLeft
 {
@@ -57,13 +60,13 @@
 }
 .titleTitle,.descriptionTitle
 {
-    color: #8cd6fb;
+    color: var(--primary);
     margin-bottom: 8px;
     font-size: x-large;
 }
 .categoryTitle
 {
-    color: #8cd6fb;
+    color: var(--primary);
 }
 
 @media screen and (max-width: 550px)

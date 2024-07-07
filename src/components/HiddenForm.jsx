@@ -9,9 +9,9 @@ import '../css/HiddenForm.css';
 
 function HiddenForm( setNewTask ){
 
-    const n = useSelector(state => state.n);
+    const n = useSelector(state => state.taskCRUD.n);
     const dispatch = useDispatch();
-    const formState = useSelector(state => state.formState);
+    const formState = useSelector(state => state.taskCRUD.formState);
 
     console.log("Hidden Form Rendered");
     const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -89,7 +89,7 @@ function HiddenForm( setNewTask ){
                         <input type={"text"}  placeholder={"Enter Task Description"} className={"taskDescription"} id={"taskDescriptionId"} name={"des"} onChange={handleChange} required></input>
                     </div>
                     <div>
-                       <Box className={""} onClick={handleSubmit}>Add Task
+                       <Box className={"submitBtn"} onClick={handleSubmit}>Add Task
                             <Fab color="success" aria-label="add" size={"small"}>
                                 <label htmlFor={"submit"} style={{margin: "0", padding: "0", position: "absolute", top: "25%", bottom: "50%"}}> <AddIcon/></label>
                             </Fab>                      

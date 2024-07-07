@@ -3,6 +3,7 @@ import Header from './components/Header';
 import FilterPanel from './components/FilterPanel';
 import TaskNavTabs from './components/TaskNavTabs';
 import BottomPanel from './components/BottomPanel';
+import './css/global.css';
 import './App.css';
 import AlignUpdates from './components/update';
 import TasksContainer from './components/TasksContainer';
@@ -13,7 +14,7 @@ function App() {
   const [filter, setFilter] = useState({type: 'Sort', subType: 'RecentlyAdded'});
 
   const [appVersion , setAppVersion] = useState(JSON.parse(localStorage.getItem('version')));
-  let isUpdated = appVersion !== '3' ?true:false;
+  let isUpdated = appVersion !== '4' ?true:false;
   
 
   const updateType = useCallback((t) =>
@@ -26,7 +27,7 @@ function App() {
   return (
     <>
       <Header />
-      {/* <FilterPanel setFilter={setFilter}/> */}
+      <FilterPanel setFilter={setFilter}/>
       <TaskNavTabs setType={updateType}/>
       <TasksContainer type={type} filter={filter}/>
       <BottomPanel/>

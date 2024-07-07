@@ -20,38 +20,41 @@
 }
 .pendingIcon
 {
-    color: hotpink;
+    color: var(--primary);
 }
 .completedIcon
 {
-    color: lightgreen;
+    color: var(--primary);
 }
 .pendingTab
 {
-    color: hotpink;
+    color: var(--primary);
 }
 .completedTab
 {
-    color: lightgreen;
+    color: var(--primary);
 }
-.active.pendingTab
+.pendingTab:hover, .pendingIcon
 {
-    border-bottom: 4px solid #da00da;
-    background-color: #da00da7f;
+    background-color: var(--primary);
+    color: var(--secondary);
 }
-.pendingTab:hover
+.completedTab:hover, .completedIcon
 {
-    background-color: #da00da7f;
-}
-.completedTab:hover
-{
-    background-color: rgba(0, 128, 0, 0.425);
+    background-color: var(--primary);
+    color: var(--secondary);
 }
 .active.completedTab
 {
-    border-bottom: 4px solid #00ba00;
-    background-color: rgba(0, 128, 0, 0.426);
-
+    border-bottom: 4px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+.active.pendingTab
+{
+    border-bottom: 4px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--secondary);
 }
 
 @media screen and (max-width: 420px)

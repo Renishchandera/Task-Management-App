@@ -4,23 +4,29 @@ import {useSelector, useDispatch} from 'react-redux';
 import EmptyIcon from '@mui/icons-material/ErrorTwoTone';
 import '../css/TasksContainer.css';
 
-function TasksContainer({ type, filter }) {
+function TasksContainer({ type }) {
     console.log("Task container red=ndered");
-    const allTasks = useSelector((state) => state.tasks);
-    const n = useSelector((state) => state.n);
-
+    const allTasks = (useSelector((state) => state.taskCRUD.tasks));
+    const sortedTasks = [...allTasks];
+    const n = useSelector((state) => state.taskCRUD.n);
     console.log(n);
 
+    const filterType = useSelector(state => state.filter.type);
+    const filterSubType = useSelector(state => state.filter.subType);
 
-    if ((allTasks.length !== 0)) {
+    if(filterType === 'sort' && filterSubType === 'First')
+    {   console.log("SORTING BY LAST")
+        sortedTasks.sort((a,b) => b.id - a.id);
+    }
+
+    if ((sortedTasks.length !== 0)) {
         return (
             <>
                 <div className={"tasksContainer"}>
-                    {console.log(allTasks)}
                     {   
-                        allTasks.map((task) => {
+                            sortedTasks.map((task) => {
                             console.log("element 1 rendered");
-                            return <div>
+                            return <div key={task.id}>
                                 {task.status === type && <Task key={task.id} task={task} />}
                             </div>
                         })

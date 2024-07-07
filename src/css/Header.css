@@ -5,9 +5,9 @@
     padding: 1rem;
     align-items: center;
     justify-content: center;
-    background-color:   #05161A;
-    color: #8cd6fb;
-    border-bottom: 2px solid #6da5C0;
+    background-color:   var(--background-color);
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary);
 }
 .headerText
 {
@@ -38,12 +38,12 @@
     font-weight: 600;
     right: 4rem;
     border-radius: 1rem;
-    border: 1px solid #6da5C0;
+    border: 1px solid var(--primary);
 }
 .aboutUsBtn:hover
 {
     transform: translateY(-2px);
-    background-color:   #114c59;
+    background-color:   var(--secondary);
     cursor: pointer;
 }
 .aboutUsBtn:active

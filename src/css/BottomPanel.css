@@ -1,11 +1,12 @@
 .bottomPanel
 {
-    color: whitesmoke;
-    background-color: #05161a;
+    color: var(--text-color);
+    background-color: var(--background-color);
     position: sticky;
     bottom: 0;
     display: flex;
     align-items: center;
+    border-top: 1px solid var(--primary);
     justify-content: space-around;
     font-weight: 900;
     font-size: larger;
@@ -29,23 +30,23 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 2rem;
-    background-color: #05161a;
-    color: whitesmoke;
+    top: 2rem;
+    background-color: var(--secondary);
+    color: var(--primary);
     border-radius: 1rem;
     margin: 0 auto;
     padding: 1rem;
-    border: 1px solid whitesmoke;
+    border: 1px solid var(--background-color);
     animation: popup 0.3s ease-in-out;
     z-index: 10000000000;
 }
 
 @keyframes popup {
     0%{
-        bottom: -2vh;
+        top: -2vh;
     }
     100% {
-        bottom: 2rem;
+        top: 2rem;
     }
 }
 /* .bottomFab
@@ -57,13 +58,13 @@
 } */
 .resetContainer:hover
 {
-    color: #dca1a1;
-    background-color: #3a5d65;
+    color: #ff5252;
+    background-color: var(--secondary);
 }
 .addTaskContainer:hover
 {
-    color: #02a8b1;
-    background-color: #3a5d65;
+    color: #00ffbb;
+    background-color:  var(--secondary);
 }
 
 @media screen and (max-width: 600px)

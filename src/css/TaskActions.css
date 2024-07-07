@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
-    color: whitesmoke;
+    color: var(--text-color);
 }
 .actionContainer{
     margin: 1rem 2rem;
@@ -15,30 +15,34 @@
 }
 .editAction:hover
 {
-    color: blue;
+    color: var(--primary);
 }
 .deleteAction:hover
 {
-    color: red;
+    color: var(--close-red);
 }
 .markAction:hover
 {
-    color: rgb(0, 203, 0);
+    color: var(--success);
+}
+.markAction.pendingMarkAction:hover
+{
+    color: var(--pending);
 }
 
 .pending
 {
-    background-color: #5f96b1;
+    background-color: var(--pending);
 }
 
 .completed
 {
-    background-color: #0f969c;
+    background-color: var(--success);
 }
 
 .taskActionsContainer.deleted
 {
-    background-color: rgb(255, 124, 124);
+    background-color: var(--close-red);
     position: fixed;
     left: -100%;
 }

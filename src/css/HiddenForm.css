@@ -7,7 +7,7 @@
     align-items: center;
     position: fixed;
     top: 0;
-    background-color: #05161a76;
+    background-color: var(--background-color2);
     z-index: 10000;
 }
 .formContainer 
@@ -18,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #05969c;
+    background-color: var(--primary);
     border-radius: 5rem;
     border: 2px solid black;
 }
@@ -26,6 +26,8 @@
 {
     position: relative;
     left: 35%;
+    font-weight: 900;
+    color: var(--close-red);
 }
 .formContainer div
 {
@@ -41,23 +43,28 @@
     padding: 0.5rem;
     font-size: large;
     font-weight: 500;
-    border: 2px solid #05161c;
-    background-color: #05161aa5;
+    border: 2px solid var(--secondary);
+    background-color: var(--background-color);
     border-radius: 1rem;
-    color: white;
+    color: var(--text-color);
 }
 .formContainer input[type="text"]:focus
 {
-    outline: 2px solid #8cd6fb;
+    outline: 2px solid var(--primary);
+    background-color: var(--secondary);
     outline-offset: 0px;
-    color: #8cd6fb
+    color: var(--primary)
+}
+.submitBtn{
+    color: var(--background-color);
+    font-weight: 900;
 }
 label
 {
     margin: 0.5rem;
     font-size: larger;
     font-weight: 900;
-    color: #8cd6fb;
+    color: var(--background-color);
 }
 
 
